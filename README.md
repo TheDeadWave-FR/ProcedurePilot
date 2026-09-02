@@ -2,6 +2,12 @@
 
 Application Windows portable inspirée du projet `Procedure` existant.
 
+## Téléchargement
+
+Le package Windows x64 non chiffré est disponible ici : [ProcedurePilot-windows-x64-v1.0.0.zip](https://github.com/TheDeadWave-FR/ProcedurePilot/raw/refs/heads/main/package/ProcedurePilot-windows-x64-v1.0.0.zip).
+
+Il contient directement `ProcedurePilot.exe` et ce fichier `README.md`. Aucun mot de passe n'est nécessaire.
+
 ## Utilisation
 
 Placez `ProcedurePilot.exe` à la racine du dossier `Procedure`, à côté de :
