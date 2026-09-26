@@ -1,29 +1,20 @@
-# Temporary build and working directories
+/target/
 /dist/
-/output/
-/tmp/
-/bin/
-/obj/
-/.vs/
+/.tools/
+/test-output/
+*.log
 
-# Per-user IDE files
-*.suo
-*.user
-*.userosscache
-*.sln.docstates
-
-# Local Procedure Pilot workspaces and generated data
+# Local documents, generated indexes and user data
 /Documents/
 /PDFs/
 /Archive/
 /Data/
+/Settings/
 /Settings.xml
 /Index.xml
 /Archive.xml
 /Lists.xml
 /Logs.txt
 /.procedurepilot-*
-
-# Windows metadata
 Thumbs.db
 Desktop.ini

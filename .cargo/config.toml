@@ -1,0 +1,4 @@
+[target.x86_64-pc-windows-gnullvm]
+# Rust selects the static unwinder, so the portable app needs no libunwind.dll.
+# Clang ignores Rust's ELF-specific -no-pie flag for this Windows target.
+rustflags = ["-C", "target-feature=+crt-static", "-C", "link-arg=-Wno-unused-command-line-argument"]
