@@ -352,12 +352,30 @@ fn normalized(path: &Path) -> String {
             _ => lexical.push(component.as_os_str()),
         }
     }
-    let p = fs::canonicalize(&lexical).unwrap_or(lexical);
-    p.to_string_lossy()
-        .replace('\\', "/")
-        .trim_start_matches("//?/")
-        .trim_end_matches('/')
-        .to_lowercase()
+    // A new child directory may not exist yet. Resolve its closest existing
+    // ancestor so aliases/junctions and Windows short paths cannot hide nesting.
+    let mut ancestor = lexical.as_path();
+    let mut missing = vec![];
+    let resolved = loop {
+        if let Ok(mut existing) = fs::canonicalize(ancestor) {
+            for component in missing.iter().rev() {
+                existing.push(component);
+            }
+            break existing;
+        }
+        let (Some(name), Some(parent)) = (ancestor.file_name(), ancestor.parent()) else {
+            break lexical.clone();
+        };
+        missing.push(name.to_owned());
+        ancestor = parent;
+    };
+    let text = resolved.to_string_lossy().replace('\\', "/").to_lowercase();
+    let text = if let Some(unc) = text.strip_prefix("//?/unc/") {
+        format!("//{unc}")
+    } else {
+        text.strip_prefix("//?/").unwrap_or(&text).to_owned()
+    };
+    text.trim_end_matches('/').to_owned()
 }
 fn migrate(configured: &mut PathBuf, root: &Path, old: &str, new: &str) -> Result<()> {
     let legacy = root.join(old);
