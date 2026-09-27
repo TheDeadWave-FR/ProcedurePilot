@@ -2,6 +2,10 @@
 
 Application Windows portable de gestion documentaire : consultation des procédures, conversion PDF, renommage, archivage et listes ordonnées. La version 2.0 est écrite en Rust et conserve la compatibilité avec les données XML de la version 1.0. Aucun environnement .NET ni serveur web n’est nécessaire.
 
+![Interface de Procedure Pilot 2.0 : bibliothèque, dates du document et du PDF, boutons d’édition et journal d’activité](docs/images/procedure-pilot.png)
+
+*Aperçu de l’application avec des procédures de démonstration.*
+
 ## Téléchargement
 
 [Télécharger Procedure Pilot 2.0.0 pour Windows x64](https://github.com/TheDeadWave-FR/ProcedurePilot/releases/download/v2.0.0/ProcedurePilot-rust-windows-x64-v2.0.0.zip) · [Toutes les versions](https://github.com/TheDeadWave-FR/ProcedurePilot/releases)
